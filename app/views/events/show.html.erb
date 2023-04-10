@@ -5,4 +5,7 @@
   <ul>
     <%= link_to 'Edit', edit_event_path(@event) %>
     <%= link_to 'All events', events_path%>
-    <%= link_to 'Delete', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "Delete event", event_path(@event), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
