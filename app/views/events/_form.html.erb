@@ -1,0 +1,19 @@
+<%= form_with model: event do |form| %>
+  <div>
+    <%= form.label :event_title %><br>
+    <%= form.text_field :event_title %>
+    <% event.errors.full_messages_for(:event_title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :event_date %><br>
+    <%= form.date_field :event_date %><br>
+    <% event.errors.full_messages_for(:event_date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
