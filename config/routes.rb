@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
+  # root to: redirect('/users/sign_in')
+  root 'users#show'
+  # root 'devise/sessions#new'
+
+  # devise_scope :user do
+  #   get 'users/:id', to: 'devise/registrations#show', as: 'user'
+  # end
+
+  get 'users/:id', to: 'users#show', as: 'user'
 
   resources :events
   # root 'devise/sessions#new'

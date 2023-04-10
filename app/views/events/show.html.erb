@@ -2,6 +2,8 @@
 <ul>
   <li><%= @event.event_title %></li>
   <li><%= @event.event_date %></li>
+  <li><%= @event.creator_id %></li>
+  <li><%= @event.creator_email %></li>
   <ul>
     <%= link_to 'Edit', edit_event_path(@event) %>
     <%= link_to 'All events', events_path%>

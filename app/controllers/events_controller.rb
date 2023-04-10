@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @events = Event.all
+    @user = current_user
+    @created_events = @user.created_events
+    # @events = Event.all
   end
 
   def show
@@ -12,7 +16,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    # @event = Event.new(event_params)
+    @event = current_user.created_events.build(event_params)
     if @event.save
       redirect_to @event
     else

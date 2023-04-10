@@ -1,8 +1,28 @@
-<h1><%= @user.username %></h1>
-<ul>
-  <li><%= @user.username %></li>
-  <li><%= @user.email %></li>
-  <li><%= @user.password %></li>
+<% if user_signed_in? %>
+  <h1><%= @user.email %></h1>
+  <h2>Events Created:</h2>
   <ul>
-    <%= link_to 'Edit', edit_user_path(@user) %>
-    <%= link_to 'All Users', users_path%>
+    <% @created_events.each do |event| %>
+      <li><%= link_to event.event_title, event %> | <%= event.event_date%> | <%= event.creator_id%> | <%= event.creator_email%></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No user logged in.</p>
+<% end %>
+<%= link_to 'New event', new_event_path %>
+<div>
+  <% if user_signed_in? %>
+    Logged in as <%= current_user.email %>.
+    <!--
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } %>
+    -->
+    <%= form_tag destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } do %>
+      <%= submit_tag "Log out" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Edit User details', edit_user_registration_path%>
+</div>

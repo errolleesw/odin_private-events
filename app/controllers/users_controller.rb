@@ -1,11 +1,18 @@
 class UsersController < ApplicationController
   # Controller to for users to sign up for the application
+
+  before_action :authenticate_user!
+
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    return if current_user.nil?
+
+    @user = current_user
+    @created_events = @user.created_events
   end
 
   def new
@@ -39,7 +46,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path
+    redirect_to new_user_session_path
   end
 
   private

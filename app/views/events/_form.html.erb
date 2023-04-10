@@ -13,6 +13,15 @@
       <div><%= message %></div>
     <% end %>
   </div>
+  <!--
+  <div>
+    <%= form.label :creator_id %><br>
+    <%= form.text_area :creator_id %><br>
+    <% event.errors.full_messages_for(:creator_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  -->
   <div>
     <%= form.submit %>
   </div>
