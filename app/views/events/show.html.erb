@@ -5,6 +5,16 @@
   <li><%= @event.creator_id %></li>
   <li><%= @event.creator_email %></li>
   <ul>
+    <%# The url: attend_event_path calls the the events#attend method with the input @event. %>
+    <%= form_with url: attend_event_path(@event), method: :post, local: true do |form| %>
+      <%= form.submit 'Attend', class: 'button' %>
+    <% end %>
+    <h2>Attendees:</h2>
+    <ul>
+      <% @attendees.each do |attendee| %>
+        <li><%= attendee.attendee_id %> | <%= attendee.attendee_email %> </li>
+      <% end %>
+    </ul>
     <%= link_to 'Edit', edit_event_path(@event) %>
     <%= link_to 'All events', events_path%>
     <%= link_to "Delete event", event_path(@event), data: {

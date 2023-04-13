@@ -42,6 +42,14 @@
   <p>No user logged in.</p>
 <% end %>
 <%= link_to 'New event', new_event_path %>
+<h2>All Events</h2>
+<ul>
+  <% @events.each do |event| %>
+    <li>
+      <%= link_to event.event_title, event %> | <%= event.event_date%> | <%= event.creator_id%> | <%= event.creator_email%>
+    </li>
+  <% end %>
+</ul>
 <div>
   <% if user_signed_in? %>
     Logged in as <%= current_user.email %>.

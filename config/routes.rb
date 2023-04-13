@@ -10,7 +10,14 @@ Rails.application.routes.draw do
 
   get 'users/:id', to: 'users#show', as: 'user'
 
-  resources :events
+  # add a new member route for events to handle the attendance section.
+  resources :events do
+    member do
+      post 'attend'
+    end
+  end
+
+  # set up standard routes for the event_attendees model
   resources :event_attendees
   # root 'devise/sessions#new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
