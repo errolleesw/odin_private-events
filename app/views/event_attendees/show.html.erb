@@ -1,0 +1,13 @@
+<h1><%= @event.event_title %></h1>
+<ul>
+  <li><%= @event.event_title %></li>
+  <li><%= @event.event_date %></li>
+  <li><%= @event.creator_id %></li>
+  <li><%= @event.creator_email %></li>
+  <ul>
+    <%= link_to 'Edit', edit_event_path(@event) %>
+    <%= link_to 'All events', events_path%>
+    <%= link_to "Delete event", event_path(@event), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>

@@ -1,0 +1,41 @@
+<%= form_with model: event do |form| %>
+  <div>
+    <%= form.label :event_title %><br>
+    <%= form.text_field :event_title %>
+    <% event.errors.full_messages_for(:event_title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :event_date %><br>
+    <%= form.date_field :event_date %><br>
+    <% event.errors.full_messages_for(:event_date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %><br>
+    <% event.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :location %><br>
+    <%= form.text_field :location %><br>
+    <% event.errors.full_messages_for(:location).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    <!--
+  <div>
+    <%= form.label :creator_id %><br>
+    <%= form.text_area :creator_id %><br>
+    <% event.errors.full_messages_for(:creator_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  -->
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>

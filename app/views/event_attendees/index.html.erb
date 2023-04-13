@@ -1,0 +1,59 @@
+<!--
+<h1>Events</h1>
+<% if @events.nil? %>
+  <p>No events found.</p>
+<% else %>
+  <ul>
+    <% @events.each do |event| %>
+      <li>
+        <%= link_to event.event_title, event %> | <%= event.event_date%> | <%= event.creator_id%> | <%= event.creator_email%>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= link_to 'New event', new_event_path %>
+<div>
+  <% if user_signed_in? %>
+    Logged in as <%= current_user.email %>.
+    <%= form_tag destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } do %>
+      <%= submit_tag "Log out" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Edit User details', edit_user_registration_path%>
+</div>
+-->
+<% if user_signed_in? %>
+  <h2>Event Attendee records</h2>
+  <% if @eventattendees.nil? %>
+    <p>No events found.</p>
+  <% else %>
+    <ul>
+      <% @eventattendees.each do |eventattendee| %>
+        <li><%= link_to eventattendee.attendee_id, attendee_id %> | <%= eventattendee.attendee_event_id%></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% else %>
+  <p>No user logged in.</p>
+<% end %>
+<%= link_to 'New event attendee record', new_event_attendee_path %>
+<div>
+  <% if user_signed_in? %>
+    Logged in as <%= current_user.email %>.
+    <!--
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } %>
+    -->
+    <%= form_tag destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } do %>
+      <%= submit_tag "Log out" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Edit User details', edit_user_registration_path%>
+</div>
