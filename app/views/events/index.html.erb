@@ -1,31 +1,3 @@
-<!--
-<h1>Events</h1>
-<% if @events.nil? %>
-  <p>No events found.</p>
-<% else %>
-  <ul>
-    <% @events.each do |event| %>
-      <li>
-        <%= link_to event.event_title, event %> | <%= event.event_date%> | <%= event.creator_id%> | <%= event.creator_email%>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-<%= link_to 'New event', new_event_path %>
-<div>
-  <% if user_signed_in? %>
-    Logged in as <%= current_user.email %>.
-    <%= form_tag destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } do %>
-      <%= submit_tag "Log out" %>
-    <% end %>
-  <% else %>
-    <%= link_to "Log in", new_user_session_path %>
-  <% end %>
-</div>
-<div>
-  <%= link_to 'Edit User details', edit_user_registration_path%>
-</div>
--->
 <% if user_signed_in? %>
   <h1><%= @user.email %></h1>
   <h2>Events Created:</h2>
@@ -50,6 +22,64 @@
     </li>
   <% end %>
 </ul>
+<h2>Past Events</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Creator Email</th>
+      <!-- Add more columns as needed -->
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @past_events.each do |event| %>
+      <tr>
+        <td><%= event.event_title %></td>
+        <td><%= event.event_date %></td>
+        <td><%= event.description %></td>
+        <td><%= event.location %></td>
+        <td><%= event.creator_email%></td>
+        <!-- Add more columns as needed -->
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h2>Upcoming Events</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Creator Email</th>
+      <!-- Add more columns as needed -->
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @upcoming_events.each do |event| %>
+      <tr>
+        <td><%= event.event_title %></td>
+        <td><%= event.event_date %></td>
+        <td><%= event.description %></td>
+        <td><%= event.location %></td>
+        <td><%= event.creator_email%></td>
+        <!-- Add more columns as needed -->
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <div>
   <% if user_signed_in? %>
     Logged in as <%= current_user.email %>.

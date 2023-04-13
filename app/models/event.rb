@@ -4,6 +4,14 @@ class Event < ApplicationRecord
 
   delegate :email, to: :creator, prefix: true
 
+  def self.past
+    where('event_date < ?', Time.now)
+  end
+
+  def self.upcoming
+    where('event_date >= ?', Time.now)
+  end
+
   # before_create :set_creator
 
   # private

@@ -5,6 +5,8 @@ class EventsController < ApplicationController
     @user = current_user
     @created_events = @user.created_events
     @events = Event.all
+    @past_events = Event.past
+    @upcoming_events = Event.upcoming
   end
 
   def show
