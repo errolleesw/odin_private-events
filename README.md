@@ -7,4 +7,4 @@ This is the Private Events project from The Odin Project's Ruby on Rails cirricu
 - Learnt how to use the #build associate on the #create action to automatically populate fields like creator id based on the logged-in user.
 - Practiced using active record queries to filter records from a model
 - Practiced using scopes to filter records
-- 
+- Learnt how to add custom css sytling to the rails app using external style sheets.
