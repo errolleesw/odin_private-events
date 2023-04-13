@@ -8,3 +8,4 @@ This is the Private Events project from The Odin Project's Ruby on Rails cirricu
 - Practiced using active record queries to filter records from a model
 - Practiced using scopes to filter records
 - Learnt how to add custom css sytling to the rails app using external style sheets.
+- Learnt how to format dates using ruby's strftime method.
