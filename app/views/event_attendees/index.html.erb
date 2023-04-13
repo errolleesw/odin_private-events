@@ -28,12 +28,12 @@
 -->
 <% if user_signed_in? %>
   <h2>Event Attendee records</h2>
-  <% if @eventattendees.nil? %>
+  <% if @event_attendees.nil? %>
     <p>No events found.</p>
   <% else %>
     <ul>
-      <% @eventattendees.each do |eventattendee| %>
-        <li><%= link_to eventattendee.attendee_id, attendee_id %> | <%= eventattendee.attendee_event_id%></li>
+      <% @event_attendees.each do |event_attendee| %>
+        <li><%= link_to event_attendee.attendee_id, event_attendee %> | <%= event_attendee.attended_event_id%></li>
       <% end %>
     </ul>
   <% end %>

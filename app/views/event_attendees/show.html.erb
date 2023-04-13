@@ -1,13 +1,25 @@
-<h1><%= @event.event_title %></h1>
+<h1>Event Attendee record detail</h1>
 <ul>
-  <li><%= @event.event_title %></li>
-  <li><%= @event.event_date %></li>
-  <li><%= @event.creator_id %></li>
-  <li><%= @event.creator_email %></li>
-  <ul>
-    <%= link_to 'Edit', edit_event_path(@event) %>
-    <%= link_to 'All events', events_path%>
-    <%= link_to "Delete event", event_path(@event), data: {
+  <li><%=  @event_attendee.attended_event_id %> | <%= @event_attendee.attendee_id%> </li>
+</ul>
+<%= link_to 'Edit event attendee record', edit_event_attendee_path %>
+<%= link_to "Delete event", event_attendee_path(@event_attendee), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %>
+<div>
+  <% if user_signed_in? %>
+    Logged in as <%= current_user.email %>.
+    <!--
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } %>
+    -->
+    <%= form_tag destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } do %>
+      <%= submit_tag "Log out" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Edit User details', edit_user_registration_path%>
+</div>

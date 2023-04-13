@@ -4,49 +4,49 @@ class EventAttendeesController < ApplicationController
   def index
     # @user = current_user
     # @created_events = @user.created_events
-    @eventattendees = EventAttendee.all
+    @event_attendees = EventAttendee.all
   end
 
   def show
-    @eventattendees = EventAttendee.find(params[:id])
+    @event_attendee = EventAttendee.find(params[:id])
   end
 
   def new
-    @eventattendees = EventAttendee.new
+    @event_attendee = EventAttendee.new
   end
 
   def create
-    @eventattendees = EventAttendee.new(eventattendee_params)
+    @event_attendee = EventAttendee.new(event_attendee_params)
     # @event = current_user.created_events.build(event_params)
-    if @eventattendees.save
-      redirect_to @eventattendees
+    if @event_attendee.save
+      redirect_to @event_attendee
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @eventattendees = EventAttendee.find(params[:id])
+    @event_attendee = EventAttendee.find(params[:id])
   end
 
   def update
-    @eventattendees = EventAttendee.find(params[:id])
-    if @eventattendees.update(event_params)
-      redirect_to @eventattendees
+    @event_attendee = EventAttendee.find(params[:id])
+    if @event_attendee.update(eventattendee_params)
+      redirect_to @event_attendee
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @eventattendees = EventAttendee.find(params[:id])
-    @eventattendees.destroy
-    redirect_to events_path
+    @event_attendee = EventAttendee.find(params[:id])
+    @event_attendee.destroy
+    redirect_to event_attendees_path
   end
 
   private
 
-  def eventattendee_params
-    params.require(:event).permit(:attendee_id, :attendee_event_id)
+  def event_attendee_params
+    params.require(:event_attendee).permit(:attendee_id, :attended_event_id)
   end
 end
