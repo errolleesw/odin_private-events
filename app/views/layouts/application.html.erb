@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
-
   <body>
+    <div class="header">
+      <h1>Events</h1>
+      <% if user_signed_in? %>
+        <div class="user-details">
+          <div class="user-email"><%= link_to current_user.email, edit_user_registration_path, class: 'user-email-link'%></div>
+          <div class="log-in">
+            <%= form_tag destroy_user_session_path, method: :delete, data: { turbo_method: "delete" } do %>
+              <%= submit_tag "Log out", class: "log-out-button"%>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="log-out">
+            <%= link_to "Log in", new_user_session_path %>
+          </div >
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,103 @@
+:root {
+  --color-primary: navy;
+  --color-secondary: skyblue;
+  --color-tertiary: grey;
+  --color-text: black;
+  --color-background: white;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-out-button {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  /* border: 1px solid var(--color-primary); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 20px;
+}
+
+
+.header a {
+  color: white;
+}
+
+.header a:visited {
+  color: var(--color-secondary);
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.main {
+  /* border: 1px solid var(--color-secondary); */
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main a {
+  color: purple;
+}
+
+.main a:visited {
+  color: var(--color-tertiary);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 10px;
+  border-bottom: 1px solid var(--color-primary);
+
+  /* font-weight: 700; */
+}
+
+table td {
+  padding: 10px;
+}
+
+table tr:not(:last-child) td {
+  border-bottom: 1px solid var(--color-primary);
+  /* padding: 8px; */
+}
