@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   # root to: redirect('/users/sign_in')
-  root 'users#show'
+  root 'events#index'
   # root 'devise/sessions#new'
 
   # devise_scope :user do

@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="header">
-      <h1>Events</h1>
+      <h1><%= link_to "Events", root_path %></h1>
       <% if user_signed_in? %>
         <div class="user-details">
           <div class="user-email"><%= link_to current_user.email, edit_user_registration_path, class: 'user-email-link'%></div>
